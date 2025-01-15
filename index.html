@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>幹事用ページ - 魚や一丁</title>
+    <link rel="stylesheet" href="organizer-script.js" />
+  </head>
+  <body>
+    <p class="budget-info">
+      人数:
+      <select id="number-of-people">
+        <option value="10">10人</option>
+        <option value="11">11人</option>
+        <option value="12">12人</option>
+        <option value="13">13人</option>
+        <option value="14">14人</option>
+        <option value="15">15人</option>
+        <option value="16">16人</option>
+        <option value="17">17人</option>
+        <option value="18">18人</option>
+        <option value="19">19人</option>
+        <option value="20">20人</option>
+        <option value="21">21人</option>
+        <option value="22">22人</option>
+        <option value="23">23人</option>
+        <option value="24">24人</option>
+        <option value="25">25人</option>
+        <option value="26">26人</option>
+        <option value="27">27人</option>
+        <option value="28">28人</option>
+        <option value="29">29人</option>
+        <option value="30">30人</option>
+        <option value="31">31人</option>
+        <option value="32">32人</option>
+        <option value="33">33人</option>
+        <option value="34">34人</option>
+        <option value="35">35人</option>
+        <option value="36">36人</option>
+        <option value="37">37人</option>
+        <option value="38">38人</option>
+        <option value="39">39人</option>
+        <option value="40">40人</option>
+      </select>
+      × 5000円 = 合計予算: <span id="total-budget">50000</span>円
+    </p>
+
+    <p class="total-info">合計金額: <span id="total-price">0</span>円</p>
+   <!-- シークバー風の背景を含む残り注文可能金額部分 -->
+   <div class="remaining-info" id="remaining-amount">
+    残りの注文可能金額: 50000円
+  </div>
+</div>
+
+
+    <!-- コミュトレ画像表示用のコンテナ -->
+    <div id="image-container"></div>
+
+    <div id="sales-details"></div>
+    <div id="sales-details"></div>
+
+
+    <button id="reset-button">リセット</button>
+
+    <h1>幹事用メニュー管理</h1>
+    <div class="menu-container">
+      <!-- メニュー項目 -->
+      <h2>＜お刺身＞</h2>
+      <div class="menu-item" data-price="2748">
+        <img
+          src="本日の大漁小舟盛り.jpg"
+          alt="本日の大漁小舟盛り"
+          style="width: 100px; height: auto; margin-right: 10px"
+        />
+        <span>本日の大漁小舟盛り</span>
+        <span>2,748円</span>
+        <input type="number" value="0" min="0" class="quantity" />
+      </div>
+
+      <div class="menu-item" data-price="1648">
+        <img
+          src="本日のトロ箱盛.jpg"
+          alt="本日のトロ箱盛"
+          style="width: 100px; height: auto; margin-right: 10px"
+        />
+        <span>本日のトロ箱盛</span>
+        <span>1,648円</span>
+        <input type="number" value="0" min="0" class="quantity" />
+      </div>
+      <div class="menu-item" data-price="768">
+        <img
+          src="おまかせひとり盛り.jpg"
+          alt="おまかせひとり盛り"
+          style="width: 100px; height: auto; margin-right: 10px"
+        />
+        <span>おまかせひとり盛り</span>
+        <span>768円</span>
+        <input type="number" value="0" min="0" class="quantity" />
+      </div>
+
+      <h2>＜寿司＞</h2>
+      <div class="menu-item" data-price="968">
+        <img
+          src="6貫にぎり寿司盛り合わせ.jpg"
+          alt="6貫にぎり寿司盛り合わせ"
+          style="width: 100px; height: auto; margin-right: 10px"
+        />
+        <span>6貫にぎり寿司盛り合わせ</span>
+        <span>968円</span>
+        <input type="number" value="0" min="0" class="quantity" />
+      </div>
+      <div class="menu-item" data-price="1428">
+        <img
+          src="10貫司盛り合わせ.jpg"
+          alt="10貫司盛り合わせ"
+          style="width: 100px; height: auto; margin-right: 10px"
+        />
+        <span>10貫司盛り合わせ</span>
+        <span>1,428円</span>
+        <input type="number" value="0" min="0" class="quantity" />
+      </div>
+      <div class="menu-item" data-price="1428">
+        <img
+          src="一丁のこぼれ寿司.jpg"
+          alt="一丁のこぼれ寿司"
+          style="width: 100px; height: auto; margin-right: 10px"
+        />
+        <span>一丁のこぼれ寿司</span>
+        <span>1,428円</span>
+        <input type="number" value="0" min="0" class="quantity" />
+      </div>
+      <div class="menu-item" data-price="438">
+        <img
+          src="あて巻きトロたく.jpg"
+          alt="あて巻きトロたく"
+          style="width: 100px; height: auto; margin-right: 10px"
+        />
+        <span>あて巻き トロたく</span>
+        <span>438円</span>
+        <input type="number" value="0" min="0" class="quantity" />
+      </div>
+      <div class="menu-item" data-price="438">
+        <img
+          src="あて巻きゴマカンパチ.jpg"
+          alt="あて巻きゴマカンパチ"
+          style="width: 100px; height: auto; margin-right: 10px"
+        />
+        <span>あて巻き ゴマカンパチ</span>
+        <span>438円</span>
+        <input type="number" value="0" min="0" class="quantity" />
+      </div>
+      <div class="menu-item" data-price="438">
+        <img
+          src="ヅケまぐろのなみだ巻き.jpg"
+          alt="ヅケまぐろのなみだ巻き"
+          style="width: 100px; height: auto; margin-right: 10px"
+        />
+        <span>ヅケまぐろのなみだ巻き</span>
+        <span>438円</span>
+        <input type="number" value="0" min="0" class="quantity" />
+      </div>
+
+      <h2>＜一品料理＞</h2>
+      <div class="menu-item" data-price="768">
+        <img
+          src="板前のだし巻き玉子.jpg"
+          alt="板前のだし巻き玉子"
+          style="width: 100px; height: auto; margin-right: 10px"
+        />
+        <span>板前のだし巻き玉子</span>
+        <span>768円</span>
+        <input type="number" value="0" min="0" class="quantity" />
+      </div>
+      <div class="menu-item" data-price="548">
+        <img
+          src="板前のだし巻き玉子.jpg"
+          alt="板前のだし巻き玉子"
+          style="width: 100px; height: auto; margin-right: 10px"
+        />
+        <span>ハーフサイズ</span>
+        <span>548円</span>
+        <input type="number" value="0" min="0" class="quantity" />
+      </div>
+      <div class="menu-item" data-price="548">
+        <img
+          src="枡入り豆富.jpg"
+          alt="枡入り豆富"
+          style="width: 100px; height: auto; margin-right: 10px"
+        />
+        <span>北海道産大豆100％ 枡入り豆富</span>
+        <span>548円</span>
+        <input type="number" value="0" min="0" class="quantity" />
+      </div>
+      <div class="menu-item" data-price="658">
+        <img
+          src="大人のエビマヨ.jpg"
+          alt="大人のエビマヨ"
+          style="width: 100px; height: auto; margin-right: 10px"
+        />
+        <span>大人のエビマヨ</span>
+        <span>658円</span>
+        <input type="number" value="0" min="0" class="quantity" />
+      </div>
+      <div class="menu-item" data-price="548">
+        <img
+          src="アサリの酒蒸し海苔の香り.jpg"
+          alt="アサリの酒蒸し海苔の香り"
+          style="width: 100px; height: auto; margin-right: 10px"
+        />
+        <span>アサリの酒蒸し海苔の香り</span>
+        <span>548円</span>
+        <input type="number" value="0" min="0" class="quantity" />
+      </div>
+      <div class="menu-item" data-price="658">
+        <img
+          src="特製鉄板餃子.jpg"
+          alt="特製鉄板餃子"
+          style="width: 100px; height: auto; margin-right: 10px"
+        />
+        <span>特製鉄板餃子</span>
+        <span>658円</span>
+        <input type="number" value="0" min="0" class="quantity" />
+      </div>
+
+      <h2>＜揚げ物＞</h2>
+      <div class="menu-item" data-price="548">
+        <img
+          src="一丁名物ザンギ.jpg"
+          alt="一丁名物ザンギ"
+          style="
+            width: 100px;
+            height: auto;
+            margin-right: 10px;
+            vertical-align: middle;
+          "
+        />
+        <span style="flex: 1">一丁名物ザンギ 5個</span>
+        <span>548円</span>
+        <input
+          type="number"
+          value="0"
+          min="0"
+          class="quantity"
+          style="vertical-align: middle"
+        />
+      </div>
+      <div class="menu-item" data-price="658">
+        <img
+          src="一丁名物ザンギ.jpg"
+          alt="一丁名物ザンギ"
+          style="
+            width: 100px;
+            height: auto;
+            margin-right: 10px;
+            vertical-align: middle;
+          "
+        />
+        <span style="flex: 1">一丁名物ザンギ 8個</span>
+        <span>658円</span>
+        <input
+          type="number"
+          value="0"
+          min="0"
+          class="quantity"
+          style="vertical-align: middle"
+        />
+      </div>
+      <div class="menu-item" data-price="1188">
+        <img
+          src="一丁名物ザンギ.jpg"
+          alt="一丁名物ザンギ"
+          style="
+            width: 100px;
+            height: auto;
+            margin-right: 10px;
+            vertical-align: middle;
+          "
+        />
+        <span style="flex: 1">一丁名物ザンギ 15個</span>
+        <span>1,188円</span>
+        <input
+          type="number"
+          value="0"
+          min="0"
+          class="quantity"
+          style="vertical-align: middle"
+        />
+      </div>
+      <div class="menu-item" data-price="1518">
+        <img
+          src="一丁名物ザンギ.jpg"
+          alt="一丁名物ザンギ"
+          style="
+            width: 100px;
+            height: auto;
+            margin-right: 10px;
+            vertical-align: middle;
+          "
+        />
+        <span style="flex: 1">一丁名物ザンギ 20個</span>
+        <span>1,518円</span>
+        <input
+          type="number"
+          value="0"
+          min="0"
+          class="quantity"
+          style="vertical-align: middle"
+        />
+      </div>
+
+      <div class="menu-item" data-price="328">
+        <img
+          src="自家製アジフライ.jpg"
+          alt="自家製アジフライ"
+          style="width: 100px; height: auto; margin-right: 10px"
+        />
+        <span>自家製アジフライ</span>
+        <span>328円</span>
+        <input type="number" value="0" min="0" class="quantity" />
+      </div>
+      <div class="menu-item" data-price="658">
+        <img
+          src="ほたて南蛮タルタルソース.jpg"
+          alt="ほたて南蛮タルタルソース"
+          style="width: 100px; height: auto; margin-right: 10px"
+        />
+        <span>ほたて南蛮タルタルソース</span>
+        <span>658円</span>
+        <input type="number" value="0" min="0" class="quantity" />
+      </div>
+
+      <h2>＜デザート＞</h2>
+      <div class="menu-item" data-price="438">
+        <img
+          src="北海道バニラアイスクリーム.jpg"
+          alt="北海道バニラアイスクリーム"
+          style="width: 100px; height: auto; margin-right: 10px"
+        />
+        <span>北海道バニラアイスクリーム</span>
+        <span>438円</span>
+        <input type="number" value="0" min="0" class="quantity" />
+      </div>
+      <div class="menu-item" data-price="438">
+        <img
+          src="北海道プレミアムアイスクリーム.jpg"
+          alt="北海道プレミアムアイスクリーム"
+          style="width: 100px; height: auto; margin-right: 10px"
+        />
+        <span>北海道プレミアムアイスクリーム</span>
+        <span>438円</span>
+        <input type="number" value="0" min="0" class="quantity" />
+      </div>
+    </div>
+    <script src="organizer-script.js"></script>
+  </body>
+</html>
