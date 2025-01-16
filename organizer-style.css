@@ -1,10 +1,9 @@
-/* 幹事用ページのスタイル */
+/* organizer-style.css */
 
-/* 全体レイアウト */
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  background-color: #fff8e1; /* 明るい背景色 */
+  background-color: #fff8e1;
   margin: 0;
   padding: 0;
   display: flex;
@@ -12,12 +11,11 @@ body {
   align-items: center;
 }
 
-/* 予算情報部分 */
 .budget-info,
 .total-info,
 .remaining-info {
-  border: 2px solid #f57c00; /* オレンジ色の枠線 */
-  border-radius: 8px; /* 枠を丸くする */
+  border: 2px solid #f57c00;
+  border-radius: 8px;
   padding: 15px;
   font-size: 18px;
   width: 500px;
@@ -27,8 +25,8 @@ body {
   justify-content: center;
   margin: 10px auto;
   text-align: center;
-  position: relative; /* シークバー背景のために相対位置を指定 */
-  overflow: hidden; /* 背景が枠外にはみ出ないように設定 */
+  position: relative;
+  overflow: hidden;
 }
 
 .total-info {
@@ -36,19 +34,17 @@ body {
   font-weight: bold;
 }
 
-/* 残り注文可能金額のスタイル */
 .remaining-info {
   font-weight: bold;
-  color: black; /* 文字の色を常に黒に固定 */
+  color: black;
   background: linear-gradient(
     to right,
     var(--progress-color, rgba(255, 0, 0, 0.3)) var(--progress-width, 0%),
     transparent var(--progress-width, 0%)
-  ); /* 初期状態からシークバーを表示 */
-  transition: background 0.3s ease-in-out; /* スムーズな変化 */
+  );
+  transition: background 0.3s ease-in-out;
 }
 
-/* リセットボタン */
 button {
   display: block;
   margin: 20px auto;
@@ -66,16 +62,14 @@ button:hover {
   background-color: #e64a19;
 }
 
-/* メニューコンテナ */
 .menu-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 20px;
-  gap: 20px; /* メニュー間の隙間 */
+  gap: 20px;
 }
 
-/* メニュー項目 */
 .menu-item {
   display: flex;
   flex-direction: column;
@@ -87,7 +81,6 @@ button:hover {
   padding: 15px;
 }
 
-/* セクションタイトル */
 h1 {
   text-align: center;
   font-size: 28px;
@@ -100,15 +93,59 @@ h2 {
   color: #d84315;
 }
 
-/* コミュトレ画像のスタイル */
 #image-container {
   margin-top: 20px;
   text-align: center;
 }
 
 #image-container img {
-  width: 300px; /* 画像の幅 */
-  max-width: 100%; /* レスポンシブ対応 */
+  width: 300px;
+  max-width: 100%;
   height: auto;
-  border-radius: 8px; /* 角を丸める */
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .budget-info,
+  .total-info,
+  .remaining-info {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .menu-container {
+    gap: 10px;
+  }
+
+  .menu-item {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  .menu-item img {
+    width: 80px;
+    margin-right: 10px;
+  }
+
+  .menu-item span {
+    font-size: 14px;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
 }
